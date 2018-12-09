@@ -1,6 +1,8 @@
 package image;
 
 import javafx.scene.paint.Color;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class PaletteRasterImage implements Image{
@@ -19,6 +21,18 @@ public class PaletteRasterImage implements Image{
         for(int i = 0 ; i< height ; i++){
             for(int y = 0 ; y<width ; y++){
                 indexesOfColors[y][i] = palettes.indexOf(color);
+            }
+        }
+
+    }
+    public PaletteRasterImage(Color[][] pixels){
+        this.width = pixels.length;
+        this.height = pixels[0].length;
+        this.palettes = new ArrayList<Color>();
+        this.indexesOfColors = new int [width][height];
+        for(int i = 0 ; i< height ; i++){
+            for(int y= 0 ; y<width ; y++){
+                indexesOfColors[y][i] = palettes.indexOf(pixels[y][i]);
             }
         }
 
